@@ -1,6 +1,6 @@
 {
   "name": "tutorial",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "canvacord": "^5.2.3",
     "dotenv": "^14.2.0",
     "eris": "^0.16.1",
-    "klaw": "^4.0.1"
+    "klaw": "^4.0.1",
+    "mongoose": "^6.2.0"
   }
 }
