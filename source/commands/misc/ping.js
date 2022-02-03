@@ -1,4 +1,4 @@
-const Command = require("../../structures/Command")
+const Command = require("../../structures/Command");
 
 module.exports = class PingCommand extends Command {
     constructor() {
@@ -9,7 +9,7 @@ module.exports = class PingCommand extends Command {
     }
 
     async run(message) {
-        let msg = await message.channel.createMessage('Pong!')
-        msg.edit(`Pong! \`${Date.now() - msg.timestamp}ms\``)
+        let msg = await message.channel.createMessage('Pong!');
+        msg.edit(`Pong! \`${Date.now() - msg.timestamp}ms\``);
     }
 }
