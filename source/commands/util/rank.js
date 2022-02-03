@@ -7,7 +7,7 @@ module.exports = class PingCommand extends Command {
         super()
         this.name = 'rank'
         this.aliases = ['xp', 'level', 'ranking']
-        this.description = 'Veja o ping do bot'
+        this.description = 'Veja seu rank ou o de outra pessoa'
     }
 
     async run(message) {
