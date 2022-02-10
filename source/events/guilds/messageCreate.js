@@ -1,7 +1,7 @@
-const Event = require("../../structures/Event");
-const Member = require("../../database/models/Member");
+import Event from "../../structures/Event.js"
+import Member from "../../database/models/Member.js"
 
-module.exports = class MessageCreate extends Event {
+export default class MessageCreate extends Event {
     constructor() {
         super();
         this.name = 'messageCreate'

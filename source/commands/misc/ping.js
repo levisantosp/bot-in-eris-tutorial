@@ -1,6 +1,7 @@
-const Command = require("../../structures/Command");
+import Command from "../../structures/Command.js"
 
-module.exports = class PingCommand extends Command {
+
+export default class PingCommand extends Command {
     constructor() {
         super()
         this.name = 'ping'

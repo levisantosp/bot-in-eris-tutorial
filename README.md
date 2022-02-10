@@ -8,7 +8,7 @@ npm i eris
 
 ## Exemplo
 ~~~javascript
-const { Client } = require("eris");
+import { Client } from "eris"
 const client = new Client('Bot token here');
 
 client.on('messageCreate', message => {

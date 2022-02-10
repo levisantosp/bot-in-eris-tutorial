@@ -1,11 +1,11 @@
-const { Client, Collection } = require("eris");
-const mongoose = require("mongoose");
+import {Client, Collection} from "eris"
+import mongoose from "mongoose"
+import fs from "fs"
 
-class App extends Client {
+export default class App extends Client {
     /**
-     * 
      * @param {string} token Insira o token do bot
-     * @param {string} options 
+     * @param {object} options 
      */
     constructor(token, options) {
         super(token, options)
@@ -14,31 +14,38 @@ class App extends Client {
     }
 
     /**
-     * 
      * @param {string} path Caminho do arquivo
-     * @param {string} name Arquivo JavaScript
      */
-     eLoad(path, name) {
-        const event = new (require(`${path}/${name}`))(this);
-        if (event.init) event.init(this);
-        this.on(event.name, (...args) => event.run(...args));
+     eLoad(path = "source/events") {
+        var modules = fs.readdirSync(path);
+        modules.forEach(module => {
+            var events = fs.readdirSync(`${path}/${module}`);
+            events.forEach(async evt => {
+                const Event = await import(`../events/${module}/${evt}`);
+                const event = new Event.default(this);
+                this.on(event.name, (...args) => event.run(...args));
+            });
+        });
     }
 
     /**
-     * 
      * @param {string} path Caminho do arquivo
-     * @param {string} name Arquivo JavaScript
      */
-     cLoad(path, name) {
-        const cmd = new (require(`${path}/${name}`))(this);
-        if (cmd.init) cmd.init(this);
-
-        this.commands.set(cmd.name, cmd);
-        if (cmd.aliases != Array) {
-            cmd.aliases.forEach(alias => {
-                this.aliases.set(alias, cmd.name);
+     cLoad(path = "source/commands") {
+        var modules = fs.readdirSync(path);
+        modules.forEach(module => {
+            var commands = fs.readdirSync(`${path}/${module}`);
+            commands.forEach(async command => {
+                const Command = await import(`../commands/${module}/${command}`);
+                const cmd = new Command.default(this);
+                this.commands.set(cmd.name, cmd);
+                if (cmd.aliases != Array) {
+                    cmd.aliases.forEach(alias => {
+                        this.aliases.set(alias, cmd.name);
+                    });
+                }
             });
-        }
+        });
     }
 
     async login() {
@@ -47,7 +54,3 @@ class App extends Client {
         this.connect();
     }
 }
-
-const client = new App(process.env.token);
-
-module.exports = client

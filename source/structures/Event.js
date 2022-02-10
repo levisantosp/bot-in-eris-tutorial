@@ -1,7 +1,7 @@
-module.exports = class Event {
-    constructor() {
+export default class Event {
+    constructor(client) {
         this.name = String
-        this.client = require("./Client");
+        this.client = client
     }
 
     async run() {}

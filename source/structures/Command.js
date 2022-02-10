@@ -1,9 +1,9 @@
-module.exports = class Command {
-    constructor() {
+export default class Command {
+    constructor(client) {
+        this.client = client
         this.name = String
         this.aliases = Array
         this.description = String
-        this.client = require("./Client");
     }
 
     async run() {}

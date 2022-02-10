@@ -1,8 +1,8 @@
-const Command = require("../../structures/Command");
-const {Rank} = require("canvacord");
-const Member = require("../../database/models/Member");
+import Command from "../../structures/Command.js"
+import Canvacord from "canvacord"
+import Member from "../../database/models/Member.js"
 
-module.exports = class PingCommand extends Command {
+export default class PingCommand extends Command {
     constructor() {
         super()
         this.name = 'rank'
@@ -15,7 +15,7 @@ module.exports = class PingCommand extends Command {
         const user = await Member.findById(member.id);
         if (!user) return message.channel.createMessage("Este usuário não possui rank.");
 
-        const rank = new Rank()
+        const rank = new Canvacord.Rank()
         .setAvatar(member.avatarURL)
         .setCurrentXP(user.xp)
         .setRequiredXP(user.xpRequired)
