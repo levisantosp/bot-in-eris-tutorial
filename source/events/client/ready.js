@@ -8,6 +8,6 @@ export default class ReadyEvent extends Event {
     }
 
     async run() {
-        console.log(`${this.client.user.username} online!`);
+        console.log(`${this.client.user.username} online!`)
     }
 }

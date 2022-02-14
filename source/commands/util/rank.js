@@ -11,9 +11,9 @@ export default class PingCommand extends Command {
     }
 
     async run(message) {
-        var member = message.guild.members.get(message.args[0]) || message.member;
-        const user = await Member.findById(member.id);
-        if (!user) return message.channel.createMessage("Este usuário não possui rank.");
+        var member = message.guild.members.get(message.args[0]) || message.member
+        const user = await Member.findById(member.id)
+        if (!user) return message.channel.createMessage("Este usuário não possui rank.")
 
         const rank = new Canvacord.Rank()
         .setAvatar(member.avatarURL)
@@ -23,14 +23,14 @@ export default class PingCommand extends Command {
         .setRank(0, 'a', false)
         .setUsername(member.username)
         .setDiscriminator(member.discriminator)
-        .setProgressBar("#FFFFFF", "COLOR");
+        .setProgressBar("#FFFFFF", "COLOR")
 
         rank.build()
         .then(data => {
             message.channel.createMessage('', {
                 file: data,
                 name: 'rank.png'
-            });
-        });
+            })
+        })
     }
 }

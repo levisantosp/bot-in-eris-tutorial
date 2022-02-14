@@ -14,6 +14,6 @@ const Member = new mongoose.Schema({
         type: Number,
         default: 0
     }
-});
+})
 
-export default mongoose.model("members", Member);
+export default mongoose.model("members", Member)

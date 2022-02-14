@@ -8,15 +8,15 @@ npm i eris
 
 ## Exemplo
 ~~~javascript
-import { Client } from "eris"
-const client = new Client('Bot token here');
+import {Client} from "eris"
+const client = new Client('Bot token here')
 
 client.on('messageCreate', message => {
     if (message.content.toLowerCase() === "!test") {
-        message.channel.createMessage("Olá, mundo!");
+        message.channel.createMessage("Olá, mundo!")
     }
-});
+})
 
-client.connect();
+client.connect()
 
 ~~~

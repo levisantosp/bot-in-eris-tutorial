@@ -1,6 +1,5 @@
 import Command from "../../structures/Command.js"
 
-
 export default class PingCommand extends Command {
     constructor() {
         super()
@@ -10,7 +9,7 @@ export default class PingCommand extends Command {
     }
 
     async run(message) {
-        let msg = await message.channel.createMessage('Pong!');
-        msg.edit(`Pong! \`${Date.now() - msg.timestamp}ms\``);
+        let msg = await message.channel.createMessage('Pong!')
+        msg.edit(`Pong! \`${Date.now() - msg.timestamp}ms\``)
     }
 }
