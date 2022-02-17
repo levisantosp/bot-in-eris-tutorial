@@ -4,6 +4,7 @@ export default class Command {
         this.name = String
         this.aliases = Array
         this.description = String
+        this.options = Array
     }
 
     async run() {}

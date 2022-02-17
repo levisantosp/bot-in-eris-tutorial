@@ -1,6 +1,6 @@
-import Command from "../../structures/Command.js"
+import Command from "../../../structures/Command.js"
 import Canvacord from "canvacord"
-import Member from "../../database/models/Member.js"
+import Member from "../../../database/models/Member.js"
 
 export default class PingCommand extends Command {
     constructor() {

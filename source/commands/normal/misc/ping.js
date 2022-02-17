@@ -1,4 +1,4 @@
-import Command from "../../structures/Command.js"
+import Command from "../../../structures/Command.js"
 
 export default class PingCommand extends Command {
     constructor() {

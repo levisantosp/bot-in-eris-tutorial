@@ -9,6 +9,7 @@ export default class App extends Client {
      */
     constructor(token, options) {
         super(token, options)
+        this.slashCommands = new Collection()
         this.commands = new Collection()
         this.aliases = new Collection()
     }
@@ -31,12 +32,12 @@ export default class App extends Client {
     /**
      * @param {string} path Caminho do arquivo
      */
-     cLoad(path = "source/commands") {
+     cLoad(path = "source/commands/normal") {
         var modules = fs.readdirSync(path)
         modules.forEach(module => {
             var commands = fs.readdirSync(`${path}/${module}`)
             commands.forEach(async command => {
-                const Command = await import(`../commands/${module}/${command}`)
+                const Command = await import(`../commands/normal/${module}/${command}`)
                 const cmd = new Command.default(this)
                 this.commands.set(cmd.name, cmd)
                 if (cmd.aliases != Array) {
@@ -48,6 +49,17 @@ export default class App extends Client {
         })
     }
 
+    sLoad(path = "source/commands/slash") {
+        var modules = fs.readdirSync(path)
+        modules.forEach(module => {
+            var commands = fs.readdirSync(`${path}/${module}`)
+            commands.forEach(async command => {
+                const Command = await import(`../commands/slash/${module}/${command}`)
+                const cmd = new Command.default(this)
+                this.slashCommands.set(cmd.name, cmd)
+            })
+        })
+    }
     async login() {
         await mongoose.connect(process.env.database_url)
         console.log('Conectado ao banco de dados com sucesso!')
