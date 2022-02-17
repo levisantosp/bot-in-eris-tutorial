@@ -33,8 +33,7 @@ export default class PingCommand extends Command {
     
             rank.build()
             .then(data => {
-                interaction.createMessage({
-                    content: "",
+                interaction.createMessage("", {
                     file: data,
                     name: "rank.png"
                 })
