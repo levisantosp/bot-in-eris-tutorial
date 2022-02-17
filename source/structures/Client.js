@@ -5,7 +5,7 @@ import fs from "fs"
 export default class App extends Client {
     /**
      * @param {string} token Insira o token do bot
-     * @param {object} options 
+     * @param {object} options Client options
      */
     constructor(token, options) {
         super(token, options)
@@ -49,6 +49,9 @@ export default class App extends Client {
         })
     }
 
+    /**
+     * @param {string} path Caminho do arquivo
+     */
     sLoad(path = "source/commands/slash") {
         var modules = fs.readdirSync(path)
         modules.forEach(module => {
