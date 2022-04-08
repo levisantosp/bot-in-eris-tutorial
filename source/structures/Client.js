@@ -64,7 +64,7 @@ export default class App extends Client {
         })
     }
     async login() {
-        await mongoose.connect(process.env.database_url)
+        await mongoose.connect(process.env.MONGO_URI)
         console.log('Conectado ao banco de dados com sucesso!')
         this.connect()
     }
