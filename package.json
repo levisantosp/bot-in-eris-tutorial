@@ -15,6 +15,7 @@
     "dotenv": "^14.2.0",
     "enhanced-ms": "^1.0.2",
     "eris": "^0.16.1",
+    "eris-addons": "^1.0.1",
     "mongoose": "^6.2.0"
   }
 }
