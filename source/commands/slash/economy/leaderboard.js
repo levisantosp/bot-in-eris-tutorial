@@ -10,7 +10,7 @@ export default class LeaderboardSlash extends Command {
     }
     async run(interaction) {
         const users = await User.find({coins: {$gt: 0}});
-        users.sort((a, b) => b.coins - a.coins);
+        users.sort((a, b) => b.coins - a.coins).slice(0, 10);
         const embed = new Embed();
         embed.setTitle("Top 10 usuários com mais coins");
         var a = 1;
